@@ -1,38 +1,7 @@
-# sv
+# Pico2Maple Config Tool
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+[https://cluoma.github.io/Pico2Maple-config/](https://cluoma.github.io/Pico2Maple-config/)
 
-## Creating a project
+This is a webtool to generate binary data for Pico2Maple's internal settings. This binary data can be loaded directly onto the device using Raspbarry Pi's (picotool)[https://github.com/raspberrypi/picotool].
 
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Currently, this tool only generates custom controller layouts.
