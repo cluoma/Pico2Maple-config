@@ -1,9 +1,10 @@
 <script>
+	import { base } from '$app/paths';
 </script>
 
 <div class="container">
 	<h1 class="text-3xl font-bold mb-6">Pico2Maple Controller Mapper</h1>
-	<div style="padding-bottom: 1rem;"><a href="/">Mapper</a> | How-to</div>
+	<div style="padding-bottom: 1rem;"><a href="{base}/">Mapper</a> | How-to</div>
 	<div style="padding-bottom: 1rem;">Compatible Firmware: pico2maple(-w)_2025-06-14.uf2</div>
 	<div class="card">
 		<h2>How to Use</h2>

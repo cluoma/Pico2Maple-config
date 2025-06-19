@@ -1,5 +1,7 @@
 <script>
 
+	import { base } from '$app/paths';
+
 	const allButtons = [
 		{id: -1, name: ""},
 		{id: 0, name: "A"},
@@ -227,7 +229,7 @@
 
 <div class="container">
 	<h1 class="text-3xl font-bold mb-6">Pico2Maple Controller Mapper</h1>
-	<div style="padding-bottom: 1rem;">Mapper | <a href="/about">How-to</a></div>
+	<div style="padding-bottom: 1rem;">Mapper | <a href="{base}/about">How-to</a></div>
 	<div style="padding-bottom: 1rem;">Compatible Firmware: pico2maple(-w)_2025-06-14.uf2</div>
 	<div class="card">
 		<form on:submit|preventDefault={handleSubmit}>
