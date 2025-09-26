@@ -1,132 +1,124 @@
 <script>
 
 	import { base } from '$app/paths';
+	import { text } from '@sveltejs/kit';
 
 	const allButtons = [
-		{id: -1, name: ""},
-		{id: 0, name: "A"},
-		{id: 1, name: "B"},
-		{id: 2, name: "C"},
-		{id: 3, name: "D"},
-		{id: 4, name: "X"},
-		{id: 5, name: "Y"},
-		{id: 6, name: "Z"},
-		{id: 7, name: "Start"},
-		{id: 8, name: "Left Bumper"},
-		{id: 9, name: "Right Bumper"},
-		{id: 10, name: "Dpad Up"},
-		{id: 11, name: "Dpad Down"},
-		{id: 12, name: "Dpad Left"},
-		{id: 13, name: "Dpad Right"},
-		{id: 14, name: "Dpad 2 Up"},
-		{id: 15, name: "Dpad 2 Down"},
-		{id: 16, name: "Dpad 2 Left"},
-		{id: 17, name: "Dpad 2 Right"},
-		{id: 18, name: "Left Trigger"},
-		{id: 19, name: "Right Trigger"},
-		{id: 20, name: "Analog Up"},
-		{id: 21, name: "Analog Down"},
-		{id: 22, name: "Analog Left"},
-		{id: 23, name: "Analog Right"},
-		{id: 24, name: "Analog 2 Up"},
-		{id: 25, name: "Analog 2 Down"},
-		{id: 26, name: "Analog 2 Left"},
-		{id: 27, name: "Analog 2 Right"}
+		{id: -1, 	name: "", 							cfgname: ""},
+		{id: 0, 	name: "A", 							cfgname: "A"},
+		{id: 1, 	name: "B", 							cfgname: "B"},
+		{id: 2, 	name: "C", 							cfgname: "C"},
+		{id: 3, 	name: "D", 							cfgname: "D"},
+		{id: 4, 	name: "X", 							cfgname: "X"},
+		{id: 5, 	name: "Y", 							cfgname: "Y"},
+		{id: 6, 	name: "Z", 							cfgname: "Z"},
+		{id: 7, 	name: "Start", 					cfgname: "START"},
+		{id: 8, 	name: "Left Bumper", 		cfgname: "LB"},
+		{id: 9, 	name: "Right Bumper", 	cfgname: "RB"},
+		{id: 10, 	name: "Dpad Up", 				cfgname: "DPAD_UP"},
+		{id: 11, 	name: "Dpad Down", 			cfgname: "DPAD_DOWN"},
+		{id: 12, 	name: "Dpad Left", 			cfgname: "DPAD_LEFT"},
+		{id: 13, 	name: "Dpad Right", 		cfgname: "DPAD_RIGHT"},
+		{id: 14, 	name: "Dpad 2 Up", 			cfgname: "DPAD2_UP"},
+		{id: 15, 	name: "Dpad 2 Down", 		cfgname: "DPAD2_DOWN"},
+		{id: 16, 	name: "Dpad 2 Left", 		cfgname: "DPAD2_LEFT"},
+		{id: 17, 	name: "Dpad 2 Right", 	cfgname: "DPAD2_RIGHT"},
+		{id: 18, 	name: "Left Trigger", 	cfgname: "LT"},
+		{id: 19, 	name: "Right Trigger", 	cfgname: "RT"},
+		{id: 20, 	name: "Analog Up", 			cfgname: "A1_UP"},
+		{id: 21, 	name: "Analog Down", 		cfgname: "A1_DOWN"},
+		{id: 22, 	name: "Analog Left", 		cfgname: "A1_LEFT"},
+		{id: 23, 	name: "Analog Right", 	cfgname: "A1_RIGHT"},
+		{id: 24, 	name: "Analog 2 Up", 		cfgname: "A2_UP"},
+		{id: 25, 	name: "Analog 2 Down", 	cfgname: "A2_DOWN"},
+		{id: 26, 	name: "Analog 2 Left", 	cfgname: "A2_LEFT"},
+		{id: 27, 	name: "Analog 2 Right", cfgname: "A2_RIGHT"}
 	];
 
 	const standardDCButtons = [
-		{id: 0, name: "A"},
-		{id: 1, name: "B"},
-		{id: 4, name: "X"},
-		{id: 5, name: "Y"},
-		{id: 7, name: "Start"},
-		{id: 10, name: "Dpad Up"},
-		{id: 11, name: "Dpad Down"},
-		{id: 12, name: "Dpad Left"},
-		{id: 13, name: "Dpad Right"},
-		{id: 18, name: "Left Trigger"},
-		{id: 19, name: "Right Trigger"},
-		{id: 20, name: "Analog Up"},
-		{id: 21, name: "Analog Down"},
-		{id: 22, name: "Analog Left"},
-		{id: 23, name: "Analog Right"}
+		{id: 0, 	name: "A", 							cfgname: "A"},
+		{id: 1, 	name: "B", 							cfgname: "B"},
+		{id: 4, 	name: "X", 							cfgname: "X"},
+		{id: 5, 	name: "Y", 							cfgname: "Y"},
+		{id: 7, 	name: "Start", 					cfgname: "START"},
+		{id: 10, 	name: "Dpad Up", 				cfgname: "DPAD_UP"},
+		{id: 11, 	name: "Dpad Down", 			cfgname: "DPAD_DOWN"},
+		{id: 12, 	name: "Dpad Left", 			cfgname: "DPAD_LEFT"},
+		{id: 13, 	name: "Dpad Right", 		cfgname: "DPAD_RIGHT"},
+		{id: 18, 	name: "Left Trigger", 	cfgname: "LT"},
+		{id: 19, 	name: "Right Trigger", 	cfgname: "RT"},
+		{id: 20, 	name: "Analog Up", 			cfgname: "A1_UP"},
+		{id: 21, 	name: "Analog Down", 		cfgname: "A1_DOWN"},
+		{id: 22, 	name: "Analog Left", 		cfgname: "A1_LEFT"},
+		{id: 23, 	name: "Analog Right", 	cfgname: "A1_RIGHT"}
 	];
 
 	const nonstandardDCButtons = [
-		{id: 2, name: "C"},
-		{id: 3, name: "D"},
-		{id: 6, name: "Z"},
-		{id: 14, name: "Dpad 2 Up"},
-		{id: 15, name: "Dpad 2 Down"},
-		{id: 16, name: "Dpad 2 Left"},
-		{id: 17, name: "Dpad 2 Right"},
-		{id: 24, name: "Analog 2 Up"},
-		{id: 25, name: "Analog 2 Down"},
-		{id: 26, name: "Analog 2 Left"},
-		{id: 27, name: "Analog 2 Right"}
+		{id: 2, 	name: "C", 							cfgname: "C"},
+		{id: 3, 	name: "D", 							cfgname: "D"},
+		{id: 6, 	name: "Z", 							cfgname: "Z"},
+		{id: 14, 	name: "Dpad 2 Up", 			cfgname: "DPAD2_UP"},
+		{id: 15, 	name: "Dpad 2 Down", 		cfgname: "DPAD2_DOWN"},
+		{id: 16, 	name: "Dpad 2 Left", 		cfgname: "DPAD2_LEFT"},
+		{id: 17, 	name: "Dpad 2 Right", 	cfgname: "DPAD2_RIGHT"},
+		{id: 24, 	name: "Analog 2 Up", 		cfgname: "A2_UP"},
+		{id: 25, 	name: "Analog 2 Down", 	cfgname: "A2_DOWN"},
+		{id: 26, 	name: "Analog 2 Left", 	cfgname: "A2_LEFT"},
+		{id: 27, 	name: "Analog 2 Right", cfgname: "A2_RIGHT"}
 	];
 
 	const DCButtons = [
 		//{id: -1, name: ""},
-		{id: 0, name: "A"},
-		{id: 1, name: "B"},
-		{id: 2, name: "C"},
-		{id: 3, name: "D"},
-		{id: 4, name: "X"},
-		{id: 5, name: "Y"},
-		{id: 6, name: "Z"},
-		{id: 7, name: "Start"},
-		//{id: 8, name: "Left Bumper"},
-		//{id: 9, name: "Right Bumper"},
-		{id: 10, name: "Dpad Up"},
-		{id: 11, name: "Dpad Down"},
-		{id: 12, name: "Dpad Left"},
-		{id: 13, name: "Dpad Right"},
-		{id: 14, name: "Dpad 2 Up"},
-		{id: 15, name: "Dpad 2 Down"},
-		{id: 16, name: "Dpad 2 Left"},
-		{id: 17, name: "Dpad 2 Right"},
-		{id: 18, name: "Left Trigger"},
-		{id: 19, name: "Right Trigger"},
-		{id: 20, name: "Analog Up"},
-		{id: 21, name: "Analog Down"},
-		{id: 22, name: "Analog Left"},
-		{id: 23, name: "Analog Right"},
-		{id: 24, name: "Analog 2 Up"},
-		{id: 25, name: "Analog 2 Down"},
-		{id: 26, name: "Analog 2 Left"},
-		{id: 27, name: "Analog 2 Right"}
+		{id: 0, 	name: "A", 							cfgname: "A"},
+		{id: 1, 	name: "B", 							cfgname: "B"},
+		{id: 2, 	name: "C", 							cfgname: "C"},
+		{id: 3, 	name: "D", 							cfgname: "D"},
+		{id: 4, 	name: "X", 							cfgname: "X"},
+		{id: 5, 	name: "Y", 							cfgname: "Y"},
+		{id: 6, 	name: "Z", 							cfgname: "Z"},
+		{id: 7, 	name: "Start", 					cfgname: "START"},
+		{id: 10, 	name: "Dpad Up", 				cfgname: "DPAD_UP"},
+		{id: 11, 	name: "Dpad Down", 			cfgname: "DPAD_DOWN"},
+		{id: 12, 	name: "Dpad Left", 			cfgname: "DPAD_LEFT"},
+		{id: 13, 	name: "Dpad Right", 		cfgname: "DPAD_RIGHT"},
+		{id: 14, 	name: "Dpad 2 Up", 			cfgname: "DPAD2_UP"},
+		{id: 15, 	name: "Dpad 2 Down", 		cfgname: "DPAD2_DOWN"},
+		{id: 16, 	name: "Dpad 2 Left", 		cfgname: "DPAD2_LEFT"},
+		{id: 17, 	name: "Dpad 2 Right", 	cfgname: "DPAD2_RIGHT"},
+		{id: 18, 	name: "Left Trigger", 	cfgname: "LT"},
+		{id: 19, 	name: "Right Trigger", 	cfgname: "RT"},
+		{id: 20, 	name: "Analog Up", 			cfgname: "A1_UP"},
+		{id: 21, 	name: "Analog Down", 		cfgname: "A1_DOWN"},
+		{id: 22, 	name: "Analog Left", 		cfgname: "A1_LEFT"},
+		{id: 23, 	name: "Analog Right", 	cfgname: "A1_RIGHT"},
+		{id: 24, 	name: "Analog 2 Up", 		cfgname: "A2_UP"},
+		{id: 25, 	name: "Analog 2 Down", 	cfgname: "A2_DOWN"},
+		{id: 26, 	name: "Analog 2 Left", 	cfgname: "A2_LEFT"},
+		{id: 27, 	name: "Analog 2 Right", cfgname: "A2_RIGHT"}
 	];
 	const sources = [
-		{id: -1, name: ""},
-		{id: 0, name: "A"},
-		{id: 1, name: "B"},
-		//{id: 2, name: "C"},
-		//{id: 3, name: "D"},
-		{id: 4, name: "X"},
-		{id: 5, name: "Y"},
-		//{id: 6, name: "Z"},
-		{id: 7, name: "Start"},
-		{id: 8, name: "Left Bumper"},
-		{id: 9, name: "Right Bumper"},
-		{id: 10, name: "Dpad Up"},
-		{id: 11, name: "Dpad Down"},
-		{id: 12, name: "Dpad Left"},
-		{id: 13, name: "Dpad Right"},
-		//{id: 14, name: "Dpad 2 Up"},
-		//{id: 15, name: "Dpad 2 Down"},
-		//{id: 16, name: "Dpad 2 Left"},
-		//{id: 17, name: "Dpad 2 Right"},
-		{id: 18, name: "Left Trigger"},
-		{id: 19, name: "Right Trigger"},
-		{id: 20, name: "Analog Up"},
-		{id: 21, name: "Analog Down"},
-		{id: 22, name: "Analog Left"},
-		{id: 23, name: "Analog Right"},
-		{id: 24, name: "Analog 2 Up"},
-		{id: 25, name: "Analog 2 Down"},
-		{id: 26, name: "Analog 2 Left"},
-		{id: 27, name: "Analog 2 Right"}
+		{id: -1, 	name: "",								cfgname: ""},
+		{id: 0, 	name: "A", 							cfgname: "A"},
+		{id: 1, 	name: "B", 							cfgname: "B"},
+		{id: 4, 	name: "X", 							cfgname: "X"},
+		{id: 5, 	name: "Y", 							cfgname: "Y"},
+		{id: 7, 	name: "Start", 					cfgname: "START"},
+		{id: 8, 	name: "Left Bumper", 		cfgname: "LB"},
+		{id: 9, 	name: "Right Bumper", 	cfgname: "RB"},
+		{id: 10, 	name: "Dpad Up", 				cfgname: "DPAD_UP"},
+		{id: 11, 	name: "Dpad Down", 			cfgname: "DPAD_DOWN"},
+		{id: 12, 	name: "Dpad Left", 			cfgname: "DPAD_LEFT"},
+		{id: 13, 	name: "Dpad Right", 		cfgname: "DPAD_RIGHT"},
+		{id: 18, 	name: "Left Trigger", 	cfgname: "LT"},
+		{id: 19, 	name: "Right Trigger", 	cfgname: "RT"},
+		{id: 20, 	name: "Analog Up", 			cfgname: "A1_UP"},
+		{id: 21, 	name: "Analog Down", 		cfgname: "A1_DOWN"},
+		{id: 22, 	name: "Analog Left", 		cfgname: "A1_LEFT"},
+		{id: 23, 	name: "Analog Right", 	cfgname: "A1_RIGHT"},
+		{id: 24, 	name: "Analog 2 Up", 		cfgname: "A2_UP"},
+		{id: 25, 	name: "Analog 2 Down", 	cfgname: "A2_DOWN"},
+		{id: 26, 	name: "Analog 2 Left", 	cfgname: "A2_LEFT"},
+		{id: 27, 	name: "Analog 2 Right", cfgname: "A2_RIGHT"}
 	];
 
 	let mappingTargets = {};
@@ -179,7 +171,48 @@
 		document.body.removeChild(downloadAnchor);
 	}
 
-	function handleSubmit() {
+	function downloadMappingsTextfile() {
+		let textOutput = "# This is a Pico2Maple controller remapping file\n";
+		textOutput += "# Copy it to your SD card inside a folder called 'pico2maple'\n\n";
+
+		allButtons.forEach(function(button, index) {
+			if (button.id !== -1) {
+				if (standardDCButtons.map(b => b.id).includes(button.id) ||
+					nonstandardDCButtons.map(b => b.id).includes(button.id)) {
+					const sources = [
+						allButtons.find(b => b.name === mappingTargets[button.name][0]).cfgname,
+						allButtons.find(b => b.name === mappingTargets[button.name][1]).cfgname,
+						allButtons.find(b => b.name === mappingTargets[button.name][2]).cfgname,
+						allButtons.find(b => b.name === mappingTargets[button.name][3]).cfgname
+					]
+					for (let i = 0; i < 4; i++) {
+						if (sources[i] !== "") {
+							textOutput += sources[i] + ": " + button.cfgname + "\n";
+						}
+					}
+				}
+			}
+		});
+
+		textOutput += "\n# OPTIONS\n";
+
+		if (optionAutoLoad) {
+			textOutput += "OPTION_AUTOLOAD: TRUE\n";
+		} else {
+			textOutput += "OPTION_AUTOLOAD: FALSE\n";
+		}
+
+		const blob = new Blob([textOutput], { type: 'text/plain' });
+		const url = URL.createObjectURL(blob);
+		const downloadAnchor = document.createElement('a');
+		downloadAnchor.setAttribute("href", url);
+		downloadAnchor.setAttribute("download", "pico2maple_controller_map.cfg");
+		document.body.appendChild(downloadAnchor);
+		downloadAnchor.click();
+		document.body.removeChild(downloadAnchor);
+	}
+
+	function handleSubmit(action) {
 		//alert("Mappings saved: " + JSON.stringify(mappingTargets, null, 2));
 		allButtons.forEach(function(button, index) {
 			if (button.id !== -1) {
@@ -223,16 +256,21 @@
 		output[255] = crc;
 
 		//alert(output);
-		downloadMappings();
+		console.log("Triggered action:", action);
+		if (action === "binary") {
+			downloadMappings();
+		} else if (action === "textfile") {
+			downloadMappingsTextfile();
+		}
 	}
 </script>
 
 <div class="container">
 	<h1 class="text-3xl font-bold mb-6">Pico2Maple Controller Mapper</h1>
-	<div style="padding-bottom: 1rem;">Mapper | <a href="{base}/about">How-to</a></div>
-	<div style="padding-bottom: 1rem;">Compatible Firmware: pico2maple(-w)_2025-06-14.uf2</div>
+	<div style="padding-bottom: 1rem;">Mapper | <a href="{base}/about">How-to Use</a></div>
+	<div style="padding-bottom: 1rem;">Minimum Compatible Firmware: pico2maple(-w)_2025-06-14</div>
 	<div class="card">
-		<form on:submit|preventDefault={handleSubmit}>
+		<form on:submit|preventDefault={handleSubmit('default')}>
 			<div class="header-row">
 				<div>Target Dreamcast Button</div>
 				<div>Source Gamepad Buttons</div>
@@ -294,7 +332,8 @@
 				</div>
 			</div>
 
-			<button type="submit" class="button">Download Mapping</button>
+			<button type="submit" class="button" on:click={() => handleSubmit('binary')}>Download Mapping for Picotool Upload</button>
+			<button type="submit" class="button" on:click={() => handleSubmit('textfile')}>Download Mapping for microSD Card</button>
 		</form>
 	</div>
 </div>
