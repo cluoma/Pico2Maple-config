@@ -2,6 +2,10 @@
 	import { base } from '$app/paths';
 </script>
 
+<svelte:head>
+	<title>Pico2Maple Config - About</title>
+</svelte:head>
+
 <div class="container">
 	<h1 class="text-3xl font-bold mb-6">Pico2Maple Controller Mapper</h1>
 	<div style="padding-bottom: 1rem;"><a href="{base}/">Mapper</a> | How-to Use</div>

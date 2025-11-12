@@ -265,6 +265,10 @@
 	}
 </script>
 
+<svelte:head>
+	<title>Pico2Maple Config</title>
+</svelte:head>
+
 <div class="container">
 	<h1 class="text-3xl font-bold mb-6">Pico2Maple Controller Mapper</h1>
 	<div style="padding-bottom: 1rem;">Mapper | <a href="{base}/about">How-to Use</a></div>
